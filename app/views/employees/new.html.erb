@@ -1,7 +1,15 @@
 <h1>Add a new employee:</h1>
 
+<%= form_for [@project, @employee] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <p><%= f.submit %></p>
+<% end %>
+
 <%= form_for [@division, @employee] do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
   <p><%= f.submit %></p>
 <% end %>
+
+

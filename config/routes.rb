@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   root to: 'divisions#index'
   resources :divisions do
     resources :employees
-
-    resources :projects do
-      resources :employees
   end
- end
+  resources :projects do
+    resources :employees
+  end
 end
