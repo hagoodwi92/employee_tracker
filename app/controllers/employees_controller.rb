@@ -1,19 +1,21 @@
 class EmployeesController < ApplicationController
   def new
-    # if params[:division_id]
+    if params[:division_id]
     @division = Division.find(params[:division_id])
+    #@employees.divisions << division
     @employee = @division.employees.new
     render :new
-    # else 
-    #   @project = Project.find(params[:project_id])
-    #   @employee = @project.employees.new
-    # end
+    else 
+      @project = Project.find(params[:project_id])
+      @employee = @project.employees.new
+    end
   end
 
   def create
     @division = Division.find(params[:division_id])
     @employee = @division.employees.new(employee_params)
     if @employee.save
+      flash[:notice] = "Employee successfully added"
       redirect_to division_path(@division)
     else
       render :new

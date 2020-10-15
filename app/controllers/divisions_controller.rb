@@ -16,6 +16,7 @@ class DivisionsController < ApplicationController
     # Code for creating a new division goes here.
     @division = Division.new(division_params)
     if @division.save
+      flash[:notice] = "Division successfully added"
       redirect_to divisions_path
     else
       render :new
